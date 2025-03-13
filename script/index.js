@@ -22,7 +22,7 @@ function displayCategories(categories){
  const categoryDiv = document.createElement("div");
 
 categoryDiv.innerHTML=`
-<button class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
+<button onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
         
 `;
 //Append the element

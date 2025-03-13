@@ -11,6 +11,19 @@ function loadVideos(){
 const displayVideos=(videos)=>{
    const videoContainer =document.getElementById("vdo-container");
 
+    videoContainer.innerHTML="";
+if(videos.length==0){
+  videoContainer.innerHTML=`
+  <div class="col-span-full flex flex-col text-center justify-center items-center py-20">
+    <img src="./Icon.png">
+    <h2 class="text-2xl font-bold py-2">
+        Oops!! Sorry, There is no content here
+    </h2>
+</div>
+  `
+  return;
+}
+
    videos.forEach(video => {
     //create elements
   const videoCard = document.createElement("div");
@@ -48,4 +61,13 @@ const displayVideos=(videos)=>{
 
 }
 
-loadVideos();
+const loadCategoryVideos=(id)=>{
+  const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}
+  `;
+  console.log(url);
+
+  fetch(url)
+  .then((res)=>res.json())
+  .then((data)=> displayVideos(data.category));
+
+}
